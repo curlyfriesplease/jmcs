@@ -1,4 +1,4 @@
-// After each quote, the second element is to define if it's a 'favourite' quote, the second is to define if it's NSFW.
+// After each quote, the next element is to define if it's a 'favourite' quote, the last is to define if it's NSFW.
 export const quoteList = [
   ["quote number one", 0, 1],
   ["quote number two", 0, 1],

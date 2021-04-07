@@ -1,25 +1,19 @@
 import { quoteList } from "./quotelist.js";
-import logo from './playbutton.png';
-import './App.css';
-
+import logo from "./playbutton.png";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p id="displayedQuote">
-          Let's look at some quotes
-        </p>
+        <p id="displayedQuote">Let's look at some quotes</p>
         <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
-        >
-
-        </a>
-        <button id="clickybutton">Let's get this party started</button>
+        ></a>
+        <img src={logo} className="App-logo" alt="logo" onClick={clicky} />
       </header>
     </div>
   );
@@ -27,49 +21,47 @@ function App() {
 
 //Declare variables
 var quoteArray = "No quote selected yet";
+var filteredQuotes = "Array not yet defined";
 var quoteText = "No quote selected yet";
 var quoteFavourite = false;
-var quoteNsfw = false;
 var newQuoteToSelect = "No quote selected yet";
 var hideNsfwSetting = true;
+var totalNumberOfQuotes = 0;
 
+//Remove any NSFW quotes from the array if they are disabled
+if ((hideNsfwSetting === true)) {
+  filteredQuotes = quoteList.filter(function(item){return item[2] !== 1 })  
+} else {
+  filteredQuotes = quoteList
+}
 
 // Count remaining quotes
-var remainingQuotes = quoteList.length;
-console.log("There are " + remainingQuotes + " quotes remaining");
+totalNumberOfQuotes = filteredQuotes.length;
+console.log("There are " + totalNumberOfQuotes + " quotes to be displayed");
 
 //Select a random quote, put it into variable quoteArray
 function selectNewQuote() {
-  newQuoteToSelect = Math.floor(Math.random() * quoteList.length);
-  console.log("Selecting array index " + newQuoteToSelect);
-  quoteArray = quoteList[newQuoteToSelect];
+  newQuoteToSelect = Math.floor(Math.random() * filteredQuotes.length);
+  console.log("Selecting quote " + (newQuoteToSelect+1) + " of " + filteredQuotes.length);
+  quoteArray = filteredQuotes[newQuoteToSelect];
   quoteText = quoteArray[0];
   quoteFavourite = quoteArray[1];
-  quoteNsfw = quoteArray[2];
-  console.log(quoteArray);
+//  console.log("selected quote is: " + quoteArray);
 }
 
 //Change the text to display the new quote, so long as it's allowed
 function changeDisplayedText() {
-  if (quoteNsfw === 1 && hideNsfwSetting === true){
- console.log("NSFW quote")
-  } else {
   document.getElementById("displayedQuote").innerHTML = quoteText;
-  }
 }
 
 //Remove the quote from the list
 function removeDisplayedQuote() {
-  quoteList.splice(newQuoteToSelect, 1);
-  console.log("There are now " + quoteList.length + " quotes remaining");
+  filteredQuotes.splice(newQuoteToSelect, 1);
+//console.log("There are now " + filteredQuotes.length + " quotes remaining");
 }
 
-
-//Click button for magic to happen
-window.onload=function(){
-const buttonElement = document.getElementById("clickybutton");
-buttonElement.addEventListener("click", () => {
-  if (quoteList.length === 0) {
+function clicky() {
+  if (filteredQuotes.length === 0) {
     console.log("outta quotes");
     document.getElementById("displayedQuote").innerHTML = "Out of quotes!";
   } else {
@@ -77,11 +69,6 @@ buttonElement.addEventListener("click", () => {
     changeDisplayedText();
     removeDisplayedQuote();
   }
-});
 }
 
 export default App;
-
-
-
-
