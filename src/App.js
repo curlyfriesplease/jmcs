@@ -1,8 +1,8 @@
 import { quoteList } from "./quotelist.js";
 import logo from "./playbutton.png";
 import "./App.css";
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
-
+//Sweetalert for popup messages
+import Swal from 'sweetalert2'
 
 function App() {
   return (
@@ -27,9 +27,11 @@ var filteredQuotes = "Array not yet defined";
 var quoteText = "No quote selected yet";
 var quoteFavourite = false;
 var newQuoteToSelect = "No quote selected yet";
-var hideNsfwSetting = true;
+var hideNsfwSetting = false;
 var totalNumberOfQuotes = 0;
 //var clickyButton = document.getElementsByClassName('App-logo');
+
+
 
 //Remove any NSFW quotes from the array if they are disabled
 if ((hideNsfwSetting === true)) {
@@ -49,7 +51,6 @@ function selectNewQuote() {
   quoteArray = filteredQuotes[newQuoteToSelect];
   quoteText = quoteArray[0];
   quoteFavourite = quoteArray[1];
-//  console.log("selected quote is: " + quoteArray);
 }
 
 //Change the text to display the new quote, so long as it's allowed
@@ -60,13 +61,19 @@ function changeDisplayedText() {
 //Remove the quote from the list
 function removeDisplayedQuote() {
   filteredQuotes.splice(newQuoteToSelect, 1);
-//console.log("There are now " + filteredQuotes.length + " quotes remaining");
 }
 
+//Check there's quotes left, display a message if none left. If quotes remain, call functions for new quote
 function clicky() {
   if (filteredQuotes.length === 0) {
     console.log("outta quotes");
-    document.getElementById("displayedQuote").innerHTML = "Out of quotes!";
+    Swal.fire({
+      title: 'Happy now?',
+      text: "You've clicked through all the bloody quotes!",
+      icon: 'success',
+      confirmButtonText: "I'm greedy.",
+    });
+    document.getElementById("displayedQuote").innerHTML = "We're done here.";
   } else {
     document.getElementById('misterClicky').style.animation="App-logo-spin 1s ease-out";
     selectNewQuote();

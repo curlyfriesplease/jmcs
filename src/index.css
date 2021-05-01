@@ -6,9 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+ background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
-	animation: gradient 30s ease infinite;
+	animation: gradient 15s ease infinite;
 }
 
 code {
@@ -16,14 +16,6 @@ code {
     monospace;
 }
 
-
-//colour changing background below. Not yet sure why it only works if I have this block here and in the body above
-
-body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 30s ease infinite;
-}
 
 @keyframes gradient {
 	0% {
