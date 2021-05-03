@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { quoteList } from "./quotelist.js";
 import "./App.css";
 //Sweetalert for popup messages
@@ -7,21 +6,37 @@ import Swal from "sweetalert2";
 import logo from "./playbutton.png";
 
 function App() {
-  React.createClass({
-    getInitialState: function () {
-      return { showMe: true };
-    },
-    onClick: function () {
-      this.setState({ showMe: false });
-    },
-    render: function () {
-      if (this.state.showMe) {
-        return <MainScreenCompo />;
+  class WasteOfTime extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        firstDivIsActive: true,
+      };
+    }
+
+    render() {
+      let activeDiv;
+
+      if (this.state.firstDivIsActive) {
+        activeDiv = <StartScreenCompo />;
       } else {
-        return <StartScreenCompo onClick={this.onClick} />;
+        activeDiv = <MainScreenCompo />;
       }
-    },
-  });
+
+      return (
+        <div
+            onClick={() => {
+              this.setState({
+                firstDivIsActive: !this.state.firstDivIsActive,
+              });
+            }}
+          >
+          {activeDiv}
+        </div>
+      );
+    }
+  }
+  new WasteOfTime();
 }
 
 /*
