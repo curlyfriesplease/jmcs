@@ -2,23 +2,41 @@ import { quoteList } from "./quotelist.js";
 import logo from "./playbutton.png";
 import "./App.css";
 //Sweetalert for popup messages
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+
+var ploppies = false;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1 id="displayedQuote">Let's look at some quotes</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        ></a>
-        <img src={logo} id="misterClicky" className="App-logo" alt="logo" onClick={clicky} />
-      </header>
-    </div>
-  );
+  if (ploppies){
+    return (
+      <div id="StartScreen">
+        <header className="App-header">
+          <h1>This is the start screen</h1>
+        </header>
+      </div>
+    );
+  } else {
+    return (
+      <div id="MainScreen" className="App">
+        <header className="App-header">
+          <h1 id="displayedQuote">Let's look at some quotes</h1>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          ></a>
+          <img
+            src={logo}
+            id="misterClicky"
+            className="App-logo"
+            alt="logo"
+            onClick={clicky}
+          />
+        </header>
+      </div>
+    );
+  }
 }
 
 //Declare variables
@@ -31,13 +49,13 @@ var hideNsfwSetting = false;
 var totalNumberOfQuotes = 0;
 //var clickyButton = document.getElementsByClassName('App-logo');
 
-
-
 //Remove any NSFW quotes from the array if they are disabled
-if ((hideNsfwSetting === true)) {
-  filteredQuotes = quoteList.filter(function(item){return item[2] !== 1 })  
+if (hideNsfwSetting === true) {
+  filteredQuotes = quoteList.filter(function (item) {
+    return item[2] !== 1;
+  });
 } else {
-  filteredQuotes = quoteList
+  filteredQuotes = quoteList;
 }
 
 // Count remaining quotes
@@ -47,7 +65,9 @@ console.log("There are " + totalNumberOfQuotes + " quotes to be displayed");
 //Select a random quote, put it into variable quoteArray
 function selectNewQuote() {
   newQuoteToSelect = Math.floor(Math.random() * filteredQuotes.length);
-  console.log("Selecting quote " + (newQuoteToSelect+1) + " of " + filteredQuotes.length);
+  console.log(
+    "Selecting quote " + (newQuoteToSelect + 1) + " of " + filteredQuotes.length
+  );
   quoteArray = filteredQuotes[newQuoteToSelect];
   quoteText = quoteArray[0];
   quoteFavourite = quoteArray[1];
@@ -68,14 +88,15 @@ function clicky() {
   if (filteredQuotes.length === 0) {
     console.log("outta quotes");
     Swal.fire({
-      title: 'Happy now?',
+      title: "Happy now?",
       text: "You've clicked through all the bloody quotes!",
-      icon: 'success',
+      icon: "success",
       confirmButtonText: "I'm greedy.",
     });
     document.getElementById("displayedQuote").innerHTML = "We're done here.";
   } else {
-    document.getElementById('misterClicky').style.animation="App-logo-spin 1s ease-out";
+    document.getElementById("misterClicky").style.animation =
+      "App-logo-spin 1s ease-out";
     selectNewQuote();
     changeDisplayedText();
     removeDisplayedQuote();
