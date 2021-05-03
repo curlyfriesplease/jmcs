@@ -1,42 +1,78 @@
+import React from "react";
+import ReactDOM from "react-dom";
 import { quoteList } from "./quotelist.js";
-import logo from "./playbutton.png";
 import "./App.css";
 //Sweetalert for popup messages
 import Swal from "sweetalert2";
-
-var ploppies = false;
+import logo from "./playbutton.png";
 
 function App() {
-  if (ploppies){
-    return (
-      <div id="StartScreen">
-        <header className="App-header">
-          <h1>This is the start screen</h1>
-        </header>
-      </div>
-    );
+  React.createClass({
+    getInitialState: function () {
+      return { showMe: true };
+    },
+    onClick: function () {
+      this.setState({ showMe: false });
+    },
+    render: function () {
+      if (this.state.showMe) {
+        return <MainScreenCompo />;
+      } else {
+        return <StartScreenCompo onClick={this.onClick} />;
+      }
+    },
+  });
+}
+
+/*
+var skipStartScreen = false;
+function App() {
+  if (skipStartScreen) {
+    return <MainScreenCompo />;
   } else {
-    return (
-      <div id="MainScreen" className="App">
-        <header className="App-header">
-          <h1 id="displayedQuote">Let's look at some quotes</h1>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          ></a>
-          <img
-            src={logo}
-            id="misterClicky"
-            className="App-logo"
-            alt="logo"
-            onClick={clicky}
-          />
-        </header>
-      </div>
-    );
+    return <StartScreenCompo />;
   }
+}
+*/
+
+//Start Screen component
+function StartScreenCompo() {
+  return (
+    <div id="StartScreen">
+      <header className="App-header">
+        <h1>This is the start screen</h1>
+      </header>
+    </div>
+  );
+}
+
+//Main Screen component
+function MainScreenCompo() {
+  return (
+    <div id="MainScreen" className="App">
+      <header className="App-header">
+        <h1 id="displayedQuote">Let's look at some quotes</h1>
+
+        <img
+          src={logo}
+          id="misterClicky"
+          className="App-logo"
+          alt="logo"
+          onClick={clicky}
+        />
+      </header>
+    </div>
+  );
+}
+
+//Function to move from the start screen to the main sceen
+function changeScreens() {
+  Swal.fire({
+    title: "Test time",
+    text: "Test!",
+    icon: "success",
+    confirmButtonText: "ok",
+  });
 }
 
 //Declare variables

@@ -9,7 +9,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logoz {
+  .Spinnaz {
     animation: App-logo-spin 1 0.25s linear;
   }
 }
