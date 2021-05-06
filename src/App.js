@@ -5,61 +5,48 @@ import "./App.css";
 import Swal from "sweetalert2";
 import logo from "./playbutton.png";
 
+
 //function App() {
-  class App extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        firstDivIsActive: true,
-      };
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      firstDivIsActive: true
     }
 
-    render() {
-      let activeDiv;
-
-      if (this.state.firstDivIsActive) {
-        activeDiv = <StartScreenCompo />;
-      } else {
-        activeDiv = <MainScreenCompo />;
-      }
-
-      return (
-        <div
-            onClick={() => {
-              this.setState({
-                firstDivIsActive: !this.state.firstDivIsActive,
-              });
-            }}
-          >*/
-          {activeDiv}
-        </div>
-      );
-    }
   }
-//  new App();
-//}
+  handleSetFirstDivIsActive = () => {
+    this.setState({firstDivIsActive: false})
+  }
 
-/*
-var skipStartScreen = false;
-function App() {
-  if (skipStartScreen) {
-    return <MainScreenCompo />;
-  } else {
-    return <StartScreenCompo />;
+  render() {
+    let activeDiv;
+
+    if (this.state.firstDivIsActive) {
+      activeDiv = <StartScreenCompo setFirstDivIsActive={this.handleSetFirstDivIsActive} />;
+    } else {
+      activeDiv = <MainScreenCompo />;
+    }
+
+    return <div>{activeDiv} }</div>;
   }
 }
-*/
+
 
 //Start Screen component
-function StartScreenCompo() {
+class StartScreenCompo extends React.Component {
+  render(){
   return (
-    <div id="StartScreen">
+    <div id="StartScreen" onClick={this.props.setFirstDivIsActive}>
       <header className="App-header">
         <h1>This is the start screen</h1>
+
       </header>
     </div>
   );
 }
+}
+
 
 //Main Screen component
 function MainScreenCompo() {
@@ -80,15 +67,6 @@ function MainScreenCompo() {
   );
 }
 
-//Function to move from the start screen to the main sceen
-function changeScreens() {
-  Swal.fire({
-    title: "Test time",
-    text: "Test!",
-    icon: "success",
-    confirmButtonText: "ok",
-  });
-}
 
 //Declare variables
 var quoteArray = "No quote selected yet";
