@@ -5,8 +5,8 @@ import "./App.css";
 import Swal from "sweetalert2";
 import logo from "./playbutton.png";
 
-function App() {
-  class WasteOfTime extends React.Component {
+//function App() {
+  class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -30,14 +30,14 @@ function App() {
                 firstDivIsActive: !this.state.firstDivIsActive,
               });
             }}
-          >
+          >*/
           {activeDiv}
         </div>
       );
     }
   }
-  new WasteOfTime();
-}
+//  new App();
+//}
 
 /*
 var skipStartScreen = false;
