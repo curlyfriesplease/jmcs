@@ -3,50 +3,69 @@ import { quoteList } from "./quotelist.js";
 import "./App.css";
 //Sweetalert for popup messages
 import Swal from "sweetalert2";
+
+//animation and images used by the start screen
+import styled, { keyframes } from "styled-components";
+//import { FadeInLeft } from "react-animations";
+//import FadeInLeft from "@bit/formidablelabs.react-animations.fade-in-left";
+import FadeInLeft from "react-animations";
+import startImage from "./startScreenImage1.png";
+
+//animation and images used by the main screen
 import logo from "./playbutton.png";
 
 
-//function App() {
+//App
 class App extends React.Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
-      firstDivIsActive: true
-    }
-
+      firstDivIsActive: true,
+    };
   }
   handleSetFirstDivIsActive = () => {
-    this.setState({firstDivIsActive: false})
-  }
+    this.setState({ firstDivIsActive: false });
+  };
 
   render() {
     let activeDiv;
 
     if (this.state.firstDivIsActive) {
-      activeDiv = <StartScreenCompo setFirstDivIsActive={this.handleSetFirstDivIsActive} />;
+      activeDiv = (
+        <StartScreenCompo
+          setFirstDivIsActive={this.handleSetFirstDivIsActive}
+        />
+      );
     } else {
       activeDiv = <MainScreenCompo />;
     }
 
-    return <div>{activeDiv} }</div>;
+    return <div>{activeDiv}</div>;
   }
 }
 
 
+
 //Start Screen component
 class StartScreenCompo extends React.Component {
-  render(){
-  return (
-    <div id="StartScreen" onClick={this.props.setFirstDivIsActive}>
-      <header className="App-header">
-        <h1>This is the start screen</h1>
 
-      </header>
-    </div>
-  );
+  
+  render() {
+    const FadeInLeftAnimation = keyframes`${FadeInLeft}`;
+const FadeInLeftDiv = styled.div`
+  animation: infinite 5s ${FadeInLeftAnimation};
+`;
+    return (
+      <div id="StartScreen" onClick={this.props.setFirstDivIsActive}>
+        <header className="App-header">
+          <FadeInLeftDiv>
+            <img src={startImage} alt="yo whaddup" id="startScreenImage"></img>
+          </FadeInLeftDiv>
+        </header>
+      </div>
+    );
+  }
 }
-}
-
 
 //Main Screen component
 function MainScreenCompo() {
@@ -66,7 +85,6 @@ function MainScreenCompo() {
     </div>
   );
 }
-
 
 //Declare variables
 var quoteArray = "No quote selected yet";
