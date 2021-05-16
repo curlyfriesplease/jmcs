@@ -6,10 +6,10 @@ import Swal from "sweetalert2";
 
 //animation and images used by the start screen
 import styled, { keyframes } from "styled-components";
-//import { FadeInLeft } from "react-animations";
-//import FadeInLeft from "@bit/formidablelabs.react-animations.fade-in-left";
 import {fadeInLeft} from "react-animations";
-import startImage from "./startScreenImage1.png";
+import {fadeInRight} from "react-animations";
+import startImage1 from "./startScreenImage1.png";
+import startImage2 from "./startScreenImage2.png";
 
 //animation and images used by the main screen
 import logo from "./playbutton.png";
@@ -47,10 +47,22 @@ class App extends React.Component {
 
 const fadeInLeftAnimation = keyframes`${fadeInLeft}`;
 const FadeInLeftDiv = styled.div`
-  animation: 5s ${fadeInLeftAnimation} ;
-  padding: 50px;
+  animation: 2s ${fadeInLeftAnimation} ;
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
-
+const fadeInRightAnimation = keyframes`${fadeInRight}`;
+const FadeInRightDiv = styled.div`
+  animation: 2s ${fadeInRightAnimation} ;
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 //Start Screen component
 class StartScreenCompo extends React.Component {
@@ -59,9 +71,11 @@ class StartScreenCompo extends React.Component {
       <div id="StartScreen" onClick={this.props.setFirstDivIsActive}>
         <header className="App-header">
           <FadeInLeftDiv>
-            
-            <h1>This is meant to be animating in</h1><img src={startImage} alt="yo whaddup" id="startScreenImage"></img>
+            <img src={startImage1} alt="look at this darling tiger" id="startScreenImage1"></img>
           </FadeInLeftDiv>
+          <FadeInRightDiv>
+            <img src={startImage2} alt="and this superb bird" id="startScreenImage2"></img>
+          </FadeInRightDiv>
         </header>
       </div>
     );
