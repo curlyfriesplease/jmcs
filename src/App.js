@@ -6,14 +6,14 @@ import Swal from "sweetalert2";
 
 //animation and images used by the start screen
 import styled, { keyframes } from "styled-components";
-import {fadeInLeft} from "react-animations";
-import {fadeInRight} from "react-animations";
+import { fadeInLeft } from "react-animations";
+import { fadeInRight } from "react-animations";
 import startImage1 from "./startScreenImage1.png";
 import startImage2 from "./startScreenImage2.png";
 
 //animation and images used by the main screen
 import logo from "./playbutton.png";
-
+import Explosion from "react-explode/Ticao";
 
 //App
 class App extends React.Component {
@@ -44,10 +44,11 @@ class App extends React.Component {
   }
 }
 
+//Start Screen
 
 const fadeInLeftAnimation = keyframes`${fadeInLeft}`;
 const FadeInLeftDiv = styled.div`
-  animation: 2s ${fadeInLeftAnimation} ;
+  animation: 2s ${fadeInLeftAnimation};
   z-index: 1;
   position: absolute;
   display: flex;
@@ -56,7 +57,7 @@ const FadeInLeftDiv = styled.div`
 `;
 const fadeInRightAnimation = keyframes`${fadeInRight}`;
 const FadeInRightDiv = styled.div`
-  animation: 2s ${fadeInRightAnimation} ;
+  animation: 2s ${fadeInRightAnimation};
   z-index: 2;
   position: absolute;
   display: flex;
@@ -64,17 +65,38 @@ const FadeInRightDiv = styled.div`
   align-items: center;
 `;
 
-//Start Screen component
+
+class ReactExplode extends React.Component {
+  render() {
+    return <Explosion size="2000" delay={2} repeatDelay={2} repeat={5} />;
+  }
+}
+
+function doAnExplosionPlease(){
+//  <Explosion size="1000" delay={2} repeatDelay={0} repeat={5} />;
+  <ReactExplode />
+  console.log("explosion! Hopefully.")
+}
+
 class StartScreenCompo extends React.Component {
   render() {
     return (
       <div id="StartScreen" onClick={this.props.setFirstDivIsActive}>
         <header className="App-header">
           <FadeInLeftDiv>
-            <img src={startImage1} alt="look at this darling tiger" id="startScreenImage1"></img>
+            <img
+              src={startImage1}
+              alt="look at this darling tiger"
+              id="startScreenImage1"
+            ></img>
           </FadeInLeftDiv>
           <FadeInRightDiv>
-            <img src={startImage2} alt="and this superb bird" id="startScreenImage2"></img>
+            <img
+              src={startImage2}
+              alt="and this superb bird"
+              id="startScreenImage2"
+            ></img>
+          {doAnExplosionPlease()}
           </FadeInRightDiv>
         </header>
       </div>
@@ -82,7 +104,9 @@ class StartScreenCompo extends React.Component {
   }
 }
 
-//Main Screen component
+//Main Screen
+
+
 function MainScreenCompo() {
   return (
     <div id="MainScreen" className="App">
@@ -161,6 +185,7 @@ function clicky() {
     selectNewQuote();
     changeDisplayedText();
     removeDisplayedQuote();
+
   }
 }
 
