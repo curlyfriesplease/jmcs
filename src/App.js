@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import styled, { keyframes } from "styled-components";
 //import { FadeInLeft } from "react-animations";
 //import FadeInLeft from "@bit/formidablelabs.react-animations.fade-in-left";
-import FadeInLeft from "react-animations";
+import {fadeInLeft} from "react-animations";
 import startImage from "./startScreenImage1.png";
 
 //animation and images used by the main screen
@@ -45,9 +45,9 @@ class App extends React.Component {
 }
 
 
-const fadeInLeftAnimation = keyframes`${FadeInLeft}`;
+const fadeInLeftAnimation = keyframes`${fadeInLeft}`;
 const FadeInLeftDiv = styled.div`
-  animation: infinite 5s ${fadeInLeftAnimation} ;
+  animation: 5s ${fadeInLeftAnimation} ;
   padding: 50px;
 `;
 
