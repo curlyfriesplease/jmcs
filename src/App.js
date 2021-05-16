@@ -45,18 +45,16 @@ class App extends React.Component {
 }
 
 
-
-//Start Screen component
-class StartScreenCompo extends React.Component {
-
-  
-  render() {
-    const FadeInLeftAnimation = keyframes`${FadeInLeft}`;
+const fadeInLeftAnimation = keyframes`${FadeInLeft}`;
 const FadeInLeftDiv = styled.div`
-  animation: ${FadeInLeftAnimation} infinite 5s;
+  animation: infinite 5s ${fadeInLeftAnimation} ;
   padding: 50px;
 `;
 
+
+//Start Screen component
+class StartScreenCompo extends React.Component {
+  render() {
     return (
       <div id="StartScreen" onClick={this.props.setFirstDivIsActive}>
         <header className="App-header">
@@ -76,7 +74,6 @@ function MainScreenCompo() {
     <div id="MainScreen" className="App">
       <header className="App-header">
         <h1 id="displayedQuote">Let's look at some quotes</h1>
-
         <img
           src={logo}
           id="misterClicky"
