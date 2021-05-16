@@ -53,13 +53,16 @@ class StartScreenCompo extends React.Component {
   render() {
     const FadeInLeftAnimation = keyframes`${FadeInLeft}`;
 const FadeInLeftDiv = styled.div`
-  animation: infinite 5s ${FadeInLeftAnimation};
+  animation: ${FadeInLeftAnimation} infinite 5s;
+  padding: 50px;
 `;
+
     return (
       <div id="StartScreen" onClick={this.props.setFirstDivIsActive}>
         <header className="App-header">
           <FadeInLeftDiv>
-            <img src={startImage} alt="yo whaddup" id="startScreenImage"></img>
+            
+            <h1>This is meant to be animating in</h1><img src={startImage} alt="yo whaddup" id="startScreenImage"></img>
           </FadeInLeftDiv>
         </header>
       </div>
