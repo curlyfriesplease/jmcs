@@ -6,14 +6,13 @@ import Swal from "sweetalert2";
 
 //animation and images used by the start screen
 import styled, { keyframes } from "styled-components";
-import { fadeInLeft } from "react-animations";
-import { fadeInRight } from "react-animations";
+import { fadeInLeft , fadeInRight } from "react-animations";
 import startImage1 from "./startScreenImage1.png";
 import startImage2 from "./startScreenImage2.png";
 
 //animation and images used by the main screen
 import logo from "./playbutton.png";
-import Explosion from "react-explode/Ticao";
+
 
 //App
 class App extends React.Component {
@@ -66,18 +65,6 @@ const FadeInRightDiv = styled.div`
 `;
 
 
-class ReactExplode extends React.Component {
-  render() {
-    return <Explosion size="2000" delay={2} repeatDelay={2} repeat={5} />;
-  }
-}
-
-function doAnExplosionPlease(){
-//  <Explosion size="1000" delay={2} repeatDelay={0} repeat={5} />;
-  <ReactExplode />
-  console.log("explosion! Hopefully.")
-}
-
 class StartScreenCompo extends React.Component {
   render() {
     return (
@@ -90,13 +77,13 @@ class StartScreenCompo extends React.Component {
               id="startScreenImage1"
             ></img>
           </FadeInLeftDiv>
+
           <FadeInRightDiv>
             <img
               src={startImage2}
               alt="and this superb bird"
               id="startScreenImage2"
             ></img>
-          {doAnExplosionPlease()}
           </FadeInRightDiv>
         </header>
       </div>
