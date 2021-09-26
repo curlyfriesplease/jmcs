@@ -16,6 +16,7 @@ import logo4 from "./playbutton.png";
 import logo2 from "./button2.png";
 import logo3 from "./button3.png";
 import logo from "./button4.png";
+import menuButton from "./menubutton.png";
 var buttonImagesArray = [logo, logo2, logo3, logo4]
 
 //Declare variables
@@ -117,18 +118,30 @@ class StartScreenCompo extends React.Component {
 //Main Quotes Screen
 function MainScreenCompo() {
   return (
-    <div id="MainScreen" className="App">
-      <header className="App-header">
-        <h1 id="displayedQuote">Let's look at some quotes</h1>
-        <img
+    <div id="wholeThing" className="App-header">
+      <div id="Banner" className="App-top-section">
+        <div id="menuButtonContainer">
+          <img
+            src={menuButton}
+           id="menuButton"
+           className="App-menu-button"
+            />
+          </div>
+    </div>
+        <div id="MainBody" className="App-middle-section">
+<h1 id="displayedQuote">Let's look at some quotes</h1>
+</div>
+<div id="LowerSection" className="App-lower-section">
+<img
           src={logo}
           id="misterClicky"
           className="App-logo"
           alt="logo"
           onClick={clicky}
         />
-      </header>
-    </div>
+        </div>
+        </div>
+
   );
 }
 
