@@ -18,6 +18,16 @@ import logo3 from "./button3.png";
 import logo from "./button4.png";
 var buttonImagesArray = [logo, logo2, logo3, logo4]
 
+//Declare variables
+var quoteArray = "No quote selected yet";
+var filteredQuotes = "Array not yet defined";
+var quoteText = "No quote selected yet";
+var quoteFavourite = false;
+var newQuoteToSelect = "No quote selected yet";
+var hideNsfwSetting = false;
+var totalNumberOfQuotes = 0;
+//var clickyButton = document.getElementsByClassName('App-logo');
+
 
 //App
 class App extends React.Component {
@@ -122,15 +132,7 @@ function MainScreenCompo() {
   );
 }
 
-//Declare variables
-var quoteArray = "No quote selected yet";
-var filteredQuotes = "Array not yet defined";
-var quoteText = "No quote selected yet";
-var quoteFavourite = false;
-var newQuoteToSelect = "No quote selected yet";
-var hideNsfwSetting = false;
-var totalNumberOfQuotes = 0;
-//var clickyButton = document.getElementsByClassName('App-logo');
+
 
 //Remove any NSFW quotes from the array if they are disabled
 if (hideNsfwSetting === true) {
@@ -156,7 +158,7 @@ function selectNewQuote() {
   quoteFavourite = quoteArray[1];
 }
 
-//Change the text to display the new quote, so long as it's allowed
+//Change the text to display the new quote
 function changeDisplayedText() {
   document.getElementById("displayedQuote").innerHTML = quoteText;
 }
@@ -174,6 +176,32 @@ function changeButtonToRandomImage(){
   document.getElementById("misterClicky").src = randomImageForButton;
 }
 
+  //Spin the button if it's a favourite quote
+  function spinTheButtonIfFavourite(){
+    if (quoteFavourite === 1){document.getElementById("misterClicky").style.animation = "App-logo-spin 1s ease-out";
+  } else {
+    console.log('Not a favourite')
+  }
+  }
+
+
+
+//Change the font size of the quote depending on if it's short, medium or long in length
+function changeQuoteFontSize(){
+if (quoteText.length >20 && quoteText.length <41){
+  console.log("Quote is medium length at " + quoteText.length + " characters");
+ // document.getElementById("displayedQuote").style.fontSize = "60%";
+}
+  else if (quoteText.length >40){
+    console.log("Quote is long length at " + quoteText.length + " characters") 
+  //  document.getElementById("displayedQuote").style.fontSize = "100%";
+  }
+  else {
+    console.log("Quote is short length at " + quoteText.length + " characters")
+  //  document.getElementById("displayedQuote").style.fontSize = "150%";
+  }
+}
+
 
 //Check there's quotes left, display a message if none left. If quotes remain, call functions for new quote
 function clicky() {
@@ -187,15 +215,16 @@ function clicky() {
     });
     document.getElementById("displayedQuote").innerHTML = "We're done here.";
   } else {
-    document.getElementById("misterClicky").style.animation =
-      "App-logo-spin 1s ease-out"; 
+
     
     selectNewQuote();
     changeDisplayedText();
     removeDisplayedQuote();
     changeButtonToRandomImage();
+    changeQuoteFontSize();
+    spinTheButtonIfFavourite();
 
-  }
+}
 }
 
 export default App;
