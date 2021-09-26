@@ -9,9 +9,14 @@ import styled, { keyframes } from "styled-components";
 import { fadeInLeft , fadeInRight } from "react-animations";
 import startImage1 from "./startScreenImage1.png";
 import startImage2 from "./startScreenImage2.png";
+import bigSoundsMate from "./WHIP.wav";
 
 //animation and images used by the main screen
-import logo from "./playbutton.png";
+import logo4 from "./playbutton.png";
+import logo2 from "./button2.png";
+import logo3 from "./button3.png";
+import logo from "./button4.png";
+var buttonImagesArray = [logo, logo2, logo3, logo4]
 
 
 //App
@@ -64,11 +69,19 @@ const FadeInRightDiv = styled.div`
   align-items: center;
 `;
 
+const startNoise = new Audio(bigSoundsMate)
 
 class StartScreenCompo extends React.Component {
   render() {
+
+    const strokeMyFace = () =>{
+      this.props.setFirstDivIsActive();
+      startNoise.play()
+      console.log('noise played')
+    }
+
     return (
-      <div id="StartScreen" onClick={this.props.setFirstDivIsActive}>
+      <div id="StartScreen" onClick={strokeMyFace}>
         <header className="App-header">
           <FadeInLeftDiv>
             <img
@@ -91,9 +104,7 @@ class StartScreenCompo extends React.Component {
   }
 }
 
-//Main Screen
-
-
+//Main Quotes Screen
 function MainScreenCompo() {
   return (
     <div id="MainScreen" className="App">
@@ -155,6 +166,15 @@ function removeDisplayedQuote() {
   filteredQuotes.splice(newQuoteToSelect, 1);
 }
 
+//Change the clicky button to a random picture
+function changeButtonToRandomImage(){
+  var randomImageForButtonIndex = Math.floor(Math.random() * buttonImagesArray.length);
+  var randomImageForButton = (buttonImagesArray[randomImageForButtonIndex])
+  console.log(randomImageForButton)
+  document.getElementById("misterClicky").src = randomImageForButton;
+}
+
+
 //Check there's quotes left, display a message if none left. If quotes remain, call functions for new quote
 function clicky() {
   if (filteredQuotes.length === 0) {
@@ -168,10 +188,12 @@ function clicky() {
     document.getElementById("displayedQuote").innerHTML = "We're done here.";
   } else {
     document.getElementById("misterClicky").style.animation =
-      "App-logo-spin 1s ease-out";
+      "App-logo-spin 1s ease-out"; 
+    
     selectNewQuote();
     changeDisplayedText();
     removeDisplayedQuote();
+    changeButtonToRandomImage();
 
   }
 }
