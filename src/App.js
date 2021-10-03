@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 //animation and images used by the start screen
 import styled, { keyframes } from "styled-components";
-import { fadeInLeft , fadeInRight } from "react-animations";
+import { fadeInLeft, fadeInRight } from "react-animations";
 import startImage1 from "./startScreenImage1.png";
 import startImage2 from "./startScreenImage2.png";
 import bigSoundsMate from "./WHIP.wav";
@@ -17,7 +17,7 @@ import logo2 from "./button2.png";
 import logo3 from "./button3.png";
 import logo from "./button4.png";
 import menuButton from "./menubutton.png";
-var buttonImagesArray = [logo, logo2, logo3, logo4]
+var buttonImagesArray = [logo, logo2, logo3, logo4];
 
 //Declare variables
 var quoteArray = "No quote selected yet";
@@ -28,7 +28,6 @@ var newQuoteToSelect = "No quote selected yet";
 var hideNsfwSetting = false;
 var totalNumberOfQuotes = 0;
 //var clickyButton = document.getElementsByClassName('App-logo');
-
 
 //App
 class App extends React.Component {
@@ -80,20 +79,19 @@ const FadeInRightDiv = styled.div`
   align-items: center;
 `;
 
-const startNoise = new Audio(bigSoundsMate)
+const startNoise = new Audio(bigSoundsMate);
 
 class StartScreenCompo extends React.Component {
   render() {
-
-    const strokeMyFace = () =>{
+    const strokeMyFace = () => {
       this.props.setFirstDivIsActive();
-      startNoise.play()
-      console.log('noise played')
-    }
+      startNoise.play();
+      console.log("noise played");
+    };
 
     return (
       <div id="StartScreen" onClick={strokeMyFace}>
-        <header className="App-header">
+        <header className="App-splash">
           <FadeInLeftDiv>
             <img
               src={startImage1}
@@ -120,32 +118,25 @@ function MainScreenCompo() {
   return (
     <div id="wholeThing" className="App-header">
       <div id="Banner" className="App-top-section">
-        <div id="menuButtonContainer">
-          <img
-            src={menuButton}
-           id="menuButton"
-           className="App-menu-button"
-            />
-          </div>
-    </div>
-        <div id="MainBody" className="App-middle-section">
-<h1 id="displayedQuote">Let's look at some quotes</h1>
-</div>
-<div id="LowerSection" className="App-lower-section">
-<img
+        <div id="menuButtonContainer" className="App-menu-button">
+          <img src={menuButton} id="menuButton" className="App-menu-button" alt="Click for options" />
+        </div>
+      </div>
+      <div id="MainBody" className="App-middle-section">
+        <h1 id="displayedQuote">Let's look at some quotes</h1>
+      </div>
+      <div id="LowerSection" className="App-lower-section">
+        <img
           src={logo}
           id="misterClicky"
           className="App-logo"
           alt="logo"
           onClick={clicky}
         />
-        </div>
-        </div>
-
+      </div>
+    </div>
   );
 }
-
-
 
 //Remove any NSFW quotes from the array if they are disabled
 if (hideNsfwSetting === true) {
@@ -182,39 +173,40 @@ function removeDisplayedQuote() {
 }
 
 //Change the clicky button to a random picture
-function changeButtonToRandomImage(){
-  var randomImageForButtonIndex = Math.floor(Math.random() * buttonImagesArray.length);
-  var randomImageForButton = (buttonImagesArray[randomImageForButtonIndex])
-  console.log(randomImageForButton)
+function changeButtonToRandomImage() {
+  var randomImageForButtonIndex = Math.floor(
+    Math.random() * buttonImagesArray.length
+  );
+  var randomImageForButton = buttonImagesArray[randomImageForButtonIndex];
+  console.log(randomImageForButton);
   document.getElementById("misterClicky").src = randomImageForButton;
 }
 
-  //Spin the button if it's a favourite quote
-  function spinTheButtonIfFavourite(){
-    if (quoteFavourite === 1){document.getElementById("misterClicky").style.animation = "App-logo-spin 1s ease-out";
+//Spin the button if it's a favourite quote
+function spinTheButtonIfFavourite() {
+  if (quoteFavourite === 1) {
+    document.getElementById("misterClicky").style.animation =
+      "App-logo-spin 1s ease-out";
   } else {
-    console.log('Not a favourite')
+    console.log("Not a favourite");
   }
-  }
-
-
+}
 
 //Change the font size of the quote depending on if it's short, medium or long in length
-function changeQuoteFontSize(){
-if (quoteText.length >20 && quoteText.length <41){
-  console.log("Quote is medium length at " + quoteText.length + " characters");
- // document.getElementById("displayedQuote").style.fontSize = "60%";
-}
-  else if (quoteText.length >40){
-    console.log("Quote is long length at " + quoteText.length + " characters") 
-  //  document.getElementById("displayedQuote").style.fontSize = "100%";
+function changeQuoteFontSize() {
+  if (quoteText.length > 20 && quoteText.length < 41) {
+    console.log(
+      "Quote is medium length at " + quoteText.length + " characters"
+    );
+    // document.getElementById("displayedQuote").style.fontSize = "60%";
+  } else if (quoteText.length > 40) {
+    console.log("Quote is long length at " + quoteText.length + " characters");
+    //  document.getElementById("displayedQuote").style.fontSize = "100%";
+  } else {
+    console.log("Quote is short length at " + quoteText.length + " characters");
+    //  document.getElementById("displayedQuote").style.fontSize = "150%";
   }
-  else {
-    console.log("Quote is short length at " + quoteText.length + " characters")
-  //  document.getElementById("displayedQuote").style.fontSize = "150%";
-  }
 }
-
 
 //Check there's quotes left, display a message if none left. If quotes remain, call functions for new quote
 function clicky() {
@@ -228,16 +220,13 @@ function clicky() {
     });
     document.getElementById("displayedQuote").innerHTML = "We're done here.";
   } else {
-
-    
     selectNewQuote();
     changeDisplayedText();
     removeDisplayedQuote();
     changeButtonToRandomImage();
     changeQuoteFontSize();
     spinTheButtonIfFavourite();
-
-}
+  }
 }
 
 export default App;

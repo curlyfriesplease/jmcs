@@ -21,6 +21,16 @@
   color: white;
 }
 
+.App-splash {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  align-items: center;
+  justify-content: center;
+
+}
+
 .App-header-black {
   min-height: 100vh;
   display: flex;
@@ -39,10 +49,7 @@
 .App-top-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 10%;
-  max-height: 80px;
+  max-height: 50px;
 }
 
 .App-middle-section {
@@ -60,16 +67,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
-  height: 60%;
+flex: 2;
+  max-height: 250px;
 }
 
 .App-menu-button {
-  all: initial;
   float: right;
   object-fit: contain;
-  max-width: 15%;
-  max-height: 15%;
+  max-height: inherit;
   padding: 15px;
 }
 
