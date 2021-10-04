@@ -114,6 +114,8 @@ class StartScreenCompo extends React.Component {
 }
 
 //Main Quotes Screen
+//Within the MainbodyDiv, wrapped around displayedquote, either do maxwidth 80% or an absolute value as px maxwidth. Also add padding/margin like "margin:0px auto"
+
 function MainScreenCompo() {
   return (
     <div id="wholeThing" className="App-header">
@@ -123,7 +125,9 @@ function MainScreenCompo() {
         </div>
       </div>
       <div id="MainBody" className="App-middle-section">
+        <div id="bitInsideMainBodyThatHoldsTheQuote" className="App-middle-section2">
         <h1 id="displayedQuote">Let's look at some quotes</h1>
+      </div>
       </div>
       <div id="LowerSection" className="App-lower-section">
         <img
@@ -198,13 +202,13 @@ function changeQuoteFontSize() {
     console.log(
       "Quote is medium length at " + quoteText.length + " characters"
     );
-    // document.getElementById("displayedQuote").style.fontSize = "60%";
+     document.getElementById("displayedQuote").style.fontSize =  "70px";
   } else if (quoteText.length > 40) {
     console.log("Quote is long length at " + quoteText.length + " characters");
-    //  document.getElementById("displayedQuote").style.fontSize = "100%";
+      document.getElementById("displayedQuote").style.fontSize = "50px";
   } else {
     console.log("Quote is short length at " + quoteText.length + " characters");
-    //  document.getElementById("displayedQuote").style.fontSize = "150%";
+      document.getElementById("displayedQuote").style.fontSize = "90px";
   }
 }
 
