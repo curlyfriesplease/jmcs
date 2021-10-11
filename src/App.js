@@ -12,6 +12,7 @@ import startImage2 from "./startScreenImage2.png";
 import bigSoundsMate from "./WHIP.wav";
 
 //animation and images used by the main screen
+import Sparkles from './Sparkles.js'
 import logo4 from "./playbutton.png";
 import logo2 from "./button2.png";
 import logo3 from "./button3.png";
@@ -85,10 +86,9 @@ class StartScreenCompo extends React.Component {
   render() {
     const strokeMyFace = () => {
       this.props.setFirstDivIsActive();
-      startNoise.play();
+    //  startNoise.play();
       console.log("noise played");
     };
-
     return (
       <div id="StartScreen" onClick={strokeMyFace}>
         <header className="App-splash">
@@ -114,7 +114,7 @@ class StartScreenCompo extends React.Component {
 }
 
 //Main Quotes Screen
-//Within the MainbodyDiv, wrapped around displayedquote, either do maxwidth 80% or an absolute value as px maxwidth. Also add padding/margin like "margin:0px auto"
+//To do: Within the MainbodyDiv, wrapped around displayedquote, either do maxwidth 80% or an absolute value as px maxwidth. Also add padding/margin like "margin:0px auto"
 
 function MainScreenCompo() {
   return (
@@ -126,7 +126,7 @@ function MainScreenCompo() {
       </div>
       <div id="MainBody" className="App-middle-section">
         <div id="bitInsideMainBodyThatHoldsTheQuote" className="App-middle-section2">
-        <h1 id="displayedQuote">Let's look at some quotes</h1>
+          <Sparkles><h1 id="displayedQuote">Let's look at some quotes</h1></Sparkles>
       </div>
       </div>
       <div id="LowerSection" className="App-lower-section">
@@ -166,6 +166,17 @@ function selectNewQuote() {
   quoteFavourite = quoteArray[1];
 }
 
+//Spin the button and sparkle the text if it's a favourite quote
+function spinTheButtonIfFavourite() {
+  if (quoteFavourite === 1) {
+    document.getElementById("misterClicky").style.animation =
+      "App-logo-spin 1s ease-out";
+    console.log("This is a favourite");
+  } else {
+    console.log("Not a favourite");
+  }
+}
+
 //Change the text to display the new quote
 function changeDisplayedText() {
   document.getElementById("displayedQuote").innerHTML = quoteText;
@@ -184,16 +195,6 @@ function changeButtonToRandomImage() {
   var randomImageForButton = buttonImagesArray[randomImageForButtonIndex];
   console.log(randomImageForButton);
   document.getElementById("misterClicky").src = randomImageForButton;
-}
-
-//Spin the button if it's a favourite quote
-function spinTheButtonIfFavourite() {
-  if (quoteFavourite === 1) {
-    document.getElementById("misterClicky").style.animation =
-      "App-logo-spin 1s ease-out";
-  } else {
-    console.log("Not a favourite");
-  }
 }
 
 //Change the font size of the quote depending on if it's short, medium or long in length
@@ -222,14 +223,15 @@ function clicky() {
       icon: "success",
       confirmButtonText: "I'm greedy.",
     });
-    document.getElementById("displayedQuote").innerHTML = "We're done here.";
+    document.getElementById("displayedQuote").innerHTML = "We're done here!";
   } else {
     selectNewQuote();
+    spinTheButtonIfFavourite();
     changeDisplayedText();
     removeDisplayedQuote();
     changeButtonToRandomImage();
     changeQuoteFontSize();
-    spinTheButtonIfFavourite();
+
   }
 }
 
