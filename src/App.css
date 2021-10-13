@@ -19,16 +19,21 @@
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   color: white;
+
 }
 
 .App-splash {
-  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   align-items: center;
   justify-content: center;
+  object-fit: contain;
 
+  width:auto;
+  height:auto;
+  min-height: 100vh;
 }
 
 .App-header-black {
@@ -103,6 +108,12 @@ flex: 2;
   color: white;
   flex: 1;
   background: black !important; 
+}
+
+.Imagesize {
+  max-width: 700px;
+  max-height: 1100px;
+  justify-content: center;
 }
 
 @keyframes App-logo-spin {

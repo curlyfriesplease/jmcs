@@ -1,5 +1,6 @@
-import React from "react";
-import { quoteList } from "./quotelist.js";
+import React, { useState } from 'react';
+//test import { quoteList } from "./quotelist.js";
+import { quoteList } from "./realQuotes.js";
 import "./App.css";
 //Sweetalert for popup messages
 import Swal from "sweetalert2";
@@ -7,24 +8,35 @@ import Swal from "sweetalert2";
 //animation and images used by the start screen
 import styled, { keyframes } from "styled-components";
 import { fadeInLeft, fadeInRight } from "react-animations";
+/* test 
 import startImage1 from "./startScreenImage1.png";
 import startImage2 from "./startScreenImage2.png";
+*/
+import startImage1 from "./splashMe.png";
+import startImage2 from "./splashLogo.png";
 import bigSoundsMate from "./WHIP.wav";
 
 //animation and images used by the main screen
 import Sparkles from './Sparkles.js'
+/* test
 import logo4 from "./playbutton.png";
 import logo2 from "./button2.png";
 import logo3 from "./button3.png";
 import logo from "./button4.png";
+*/
+import logo4 from "./jonface4PNG.png";
+import logo2 from "./jonface2PNG.png";
+import logo3 from "./jonface3PNG.png";
+import logo from "./jonface1PNG.png";
 import menuButton from "./menubutton.png";
+import ReactModal from 'react-modal';
 var buttonImagesArray = [logo, logo2, logo3, logo4];
 
 //Declare variables
 var quoteArray = "No quote selected yet";
 var filteredQuotes = "Array not yet defined";
 var quoteText = "No quote selected yet";
-var quoteFavourite = false;
+var quoteFavourite = 0;
 var newQuoteToSelect = "No quote selected yet";
 var hideNsfwSetting = false;
 var totalNumberOfQuotes = 0;
@@ -94,6 +106,7 @@ class StartScreenCompo extends React.Component {
         <header className="App-splash">
           <FadeInLeftDiv>
             <img
+            className="Imagesize"
               src={startImage1}
               alt="look at this darling tiger"
               id="startScreenImage1"
@@ -102,6 +115,7 @@ class StartScreenCompo extends React.Component {
 
           <FadeInRightDiv>
             <img
+            className="Imagesize"
               src={startImage2}
               alt="and this superb bird"
               id="startScreenImage2"
@@ -116,8 +130,23 @@ class StartScreenCompo extends React.Component {
 //Main Quotes Screen
 //To do: Within the MainbodyDiv, wrapped around displayedquote, either do maxwidth 80% or an absolute value as px maxwidth. Also add padding/margin like "margin:0px auto"
 
+// Quotefave: Use hooks. Move global variable into state. In order to update that state you need to do it in react, do it inside the components 
+// Clicky to return values. INside MainScreenCompo have state, with the return value of clicky update that state. All the global values should/could be 
+//in mainscreencompo. Clicky should return all the things it wants. Inside MainScreenCompo you would have a function that calls clicky and calls setState
+// on each of the bits of component state
+
+
 function MainScreenCompo() {
-  return (
+// Declare state variable to track quote favouritism
+const [fave, setFave] = useState(0);
+
+// Function to call clicky
+function isItFave(wellTellMeIsIt){
+  clicky();
+  console.log("isItFave called");
+}
+
+return (
     <div id="wholeThing" className="App-header">
       <div id="Banner" className="App-top-section">
         <div id="menuButtonContainer" className="App-menu-button">
@@ -126,7 +155,7 @@ function MainScreenCompo() {
       </div>
       <div id="MainBody" className="App-middle-section">
         <div id="bitInsideMainBodyThatHoldsTheQuote" className="App-middle-section2">
-          <Sparkles><h1 id="displayedQuote">Let's look at some quotes</h1></Sparkles>
+          <Sparkles><h1 id="displayedQuote">Let's do this</h1></Sparkles>
       </div>
       </div>
       <div id="LowerSection" className="App-lower-section">
@@ -135,7 +164,7 @@ function MainScreenCompo() {
           id="misterClicky"
           className="App-logo"
           alt="logo"
-          onClick={clicky}
+          onClick={isItFave}
         />
       </div>
     </div>
