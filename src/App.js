@@ -234,10 +234,10 @@ function changeQuoteFontSize() {
     console.log(
       "Quote is medium length at " + quoteText.length + " characters"
     );
-     document.getElementById("displayedQuote").style.fontSize =  "50px";
+     document.getElementById("displayedQuote").style.fontSize =  "55px";
   } else if (quoteText.length > 40) {
     console.log("Quote is long length at " + quoteText.length + " characters");
-      document.getElementById("displayedQuote").style.fontSize = "30px";
+      document.getElementById("displayedQuote").style.fontSize = "40px";
   } else {
     console.log("Quote is short length at " + quoteText.length + " characters");
       document.getElementById("displayedQuote").style.fontSize = "70px";
