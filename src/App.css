@@ -3,8 +3,9 @@
 }
 
 .App-logo {
-  width: 20vmin;
-  height: 20vmin;
+  width: 30vmin;
+  height: 30vmin;
+  padding: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -94,7 +95,7 @@ flex: 2;
 .App-menu-button {
   float: right;
   object-fit: contain;
-  max-height: inherit;
+  max-height: 30px;
   padding: 15px;
 }
 
