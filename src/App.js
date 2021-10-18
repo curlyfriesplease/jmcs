@@ -81,6 +81,7 @@ const FadeInLeftDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 `;
 const fadeInRightAnimation = keyframes`${fadeInRight}`;
 const FadeInRightDiv = styled.div`
@@ -90,6 +91,7 @@ const FadeInRightDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 30%;
 `;
 
 const startNoise = new Audio(bigSoundsMate);
@@ -106,7 +108,7 @@ class StartScreenCompo extends React.Component {
         <header className="App-splash">
           <FadeInLeftDiv>
             <img
-            className="Imagesize"
+              class="Imagesize"
               src={startImage1}
               alt="look at this darling tiger"
               id="startScreenImage1"
@@ -115,7 +117,7 @@ class StartScreenCompo extends React.Component {
 
           <FadeInRightDiv>
             <img
-            className="Imagesize"
+            class="Imagesize"
               src={startImage2}
               alt="and this superb bird"
               id="startScreenImage2"

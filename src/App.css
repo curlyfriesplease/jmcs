@@ -30,9 +30,8 @@
   align-items: center;
   justify-content: center;
   object-fit: contain;
-
-  width:auto;
-  height:auto;
+  width:90%;
+  height:90%;
   min-height: 100vh;
 }
 
@@ -111,8 +110,8 @@ flex: 2;
 }
 
 .Imagesize {
-  max-width: 700px;
-  max-height: 1100px;
+  max-width: 90%;
+  max-height: 90%;
   justify-content: center;
 }
 
