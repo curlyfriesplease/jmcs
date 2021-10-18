@@ -89,14 +89,14 @@
   align-items: center;
   justify-content: center;
 flex: 2;
-  max-height: 250px;
+  max-height: 180px;
 }
 
 .App-menu-button {
   float: right;
   object-fit: contain;
-  max-height: 30px;
-  padding: 15px;
+  max-height: 25px;
+  padding: 10px;
 }
 
 .App-test-div {
