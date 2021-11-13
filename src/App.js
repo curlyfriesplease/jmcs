@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 //animation and images used by the start screen
 import styled, { keyframes } from "styled-components";
-import { fadeInLeft, fadeInRight } from "react-animations";
+import { fadeInLeft, fadeInRight, rotateInDownRight } from "react-animations";
 /* test 
 import startImage1 from "./startScreenImage1.png";
 import startImage2 from "./startScreenImage2.png";
@@ -75,7 +75,7 @@ class App extends React.Component {
 
 const fadeInLeftAnimation = keyframes`${fadeInLeft}`;
 const FadeInLeftDiv = styled.div`
-  animation: 2s ${fadeInLeftAnimation};
+  animation: 1.5s ${fadeInLeftAnimation};
   z-index: 1;
   position: absolute;
   display: flex;
@@ -85,7 +85,7 @@ const FadeInLeftDiv = styled.div`
 `;
 const fadeInRightAnimation = keyframes`${fadeInRight}`;
 const FadeInRightDiv = styled.div`
-  animation: 2s ${fadeInRightAnimation};
+  animation: 3s ${fadeInRightAnimation};
   z-index: 2;
   position: absolute;
   display: flex;
@@ -110,7 +110,7 @@ class StartScreenCompo extends React.Component {
             <img
               class="Imagesize"
               src={startImage1}
-              alt="look at this darling tiger"
+              alt="image of me"
               id="startScreenImage1"
             ></img>
           </FadeInLeftDiv>
@@ -119,7 +119,7 @@ class StartScreenCompo extends React.Component {
             <img
             class="Imagesize"
               src={startImage2}
-              alt="and this superb bird"
+              alt="image of logo"
               id="startScreenImage2"
             ></img>
           </FadeInRightDiv>
