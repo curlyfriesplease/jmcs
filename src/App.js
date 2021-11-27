@@ -12,8 +12,8 @@ import { fadeInLeft, fadeInRight, rotateInDownRight } from "react-animations";
 import startImage1 from "./startScreenImage1.png";
 import startImage2 from "./startScreenImage2.png";
 */
-import startImage1 from "./splashMe.png";
-import startImage2 from "./splashLogo.png";
+import startImage1 from "./splashMeSmaller.png";
+import startImage2 from "./splashLogoSmaller.png";
 import bigSoundsMate from "./WHIP.wav";
 
 //animation and images used by the main screen
