@@ -75,7 +75,7 @@ class App extends React.Component {
 
 const fadeInLeftAnimation = keyframes`${fadeInLeft}`;
 const FadeInLeftDiv = styled.div`
-  animation: 1.5s ${fadeInLeftAnimation};
+  animation: 3s ${fadeInLeftAnimation};
   z-index: 1;
   position: absolute;
   display: flex;
