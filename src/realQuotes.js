@@ -61,7 +61,6 @@ export const quoteList = [
 ["What festivals have you been to in the past 10 years?", 0, 0],
 ["What is the worst dog breed?", 0, 0],
 ["What is your stand to sit ratio when enjoying a bag of crisps?", 0, 0],
-["What kind of pet would suit the name Winkles?", 0, 0],
 ["What makes you feel all hot and sick?", 1, 0],
 ["What makes you feel like half a million dollars?", 0, 0],
 ["What one piece of advice would you give to people who want to look good?", 0, 0],
